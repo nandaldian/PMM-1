@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.usuario.ejercicios.MainActivity"
+    android:orientation="vertical">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:orientation="horizontal"
+        android:background="@color/NEGRO">
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/blue"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Blue"
+                android:textColor="@color/BLANCO"
+                android:buttonTint="@color/BLANCO"
+                />
+
+            <RadioButton
+                android:id="@+id/red"
+                android:layout_width="103dp"
+                android:layout_height="match_parent"
+                android:text="Red"
+                android:textColor="@color/BLANCO"
+                android:buttonTint="@color/BLANCO"/>
+
+            <RadioButton
+                android:id="@+id/white"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1.00"
+                android:text="White"
+                android:textColor="@color/BLANCO"
+                android:buttonTint="@color/BLANCO"/>
+
+        </RadioGroup>
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:background="@color/NEGRO"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/ButtonSet"
+            android:layout_marginLeft="150dp"
+            android:layout_width="114dp"
+            android:layout_height="match_parent"
+            android:text="Set Color"/>
+
+        <Button
+            android:id="@+id/ButtonCancel"
+            android:layout_width="114dp"
+            android:layout_height="match_parent"
+            android:text="Cancel"/>
+
+    </LinearLayout>
+<TextView
+    android:id="@+id/color"
+    android:layout_width="match_parent"
+    android:layout_height="210dp"
+    android:background="@color/NEGRO"
+
+    />
+
+
+</LinearLayout>
