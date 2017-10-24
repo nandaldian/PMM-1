@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context="com.example.chrcuc.botones_ventana.MainActivity"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/botonuno"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Layout Linear"
+        android:layout_alignParentRight="true"/>
+
+    <Button
+        android:id="@+id/botondos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Layout en Tabla"
+        android:layout_alignParentRight="true"/>
+
+    <Button
+        android:id="@+id/botontres"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Layot Relativo"
+        android:layout_alignParentRight="true"/>
+
+    <Button
+        android:id="@+id/botoncuatro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Layout en Grid"
+        android:layout_alignParentRight="true"/>
+
+    <Button
+        android:id="@+id/botoncinco"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Go CheckBox"
+        android:layout_alignParentRight="true"/>
+
+    <Button
+        android:id="@+id/botonseis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CheckBox 2"
+        android:layout_alignParentRight="true"/>
+
+    <Button
+        android:id="@+id/botonsiete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CheckBox 3"
+        android:layout_alignParentRight="true"/>
+
+
+</LinearLayout>
