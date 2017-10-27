@@ -7,6 +7,7 @@ import android.support.annotation.RequiresApi;
 import android.support.v4.util.TimeUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.view.menu.MenuAdapter;
 import android.support.v7.view.menu.MenuView;
 import android.support.v7.widget.ListViewCompat;
 import android.view.LayoutInflater;
@@ -46,14 +47,17 @@ public class MainActivity extends AppCompatActivity {
 
         itsOpciones.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView arg0, View arg1, int posicion, long id) {
-                Intent pantalla = new Intent(MainActivity.this,Pantalla2.class);
-                Bundle mibundle=new Bundle();
+
 
                 Titular T =new Titular(datos[posicion].getTitulo(),datos[posicion].getSubtitulo(),datos[posicion].getFoto());
 
-                    mibundle.putSerializable("Titular",T);
-                    pantalla.putExtras(mibundle);
+                Intent pantalla = new Intent(MainActivity.this,Pantalla2.class);
+                Bundle mibundle=new Bundle();
+                mibundle.putSerializable("TitularKey",T);
+                pantalla.putExtras(mibundle);
+                startActivity(pantalla);
 
+//En el transcurso de pantallas peta la aplicacion
 
                // Toast.makeText(getApplicationContext(), mensaje, Toast.LENGTH_LONG).show();
             }

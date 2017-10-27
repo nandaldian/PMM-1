@@ -1,6 +1,7 @@
 package com.example.chrcuc.good;
 
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -17,10 +18,13 @@ public class Pantalla2 extends MainActivity{
         setContentView(R.layout.window2);
 
         final TextView otroSaludo= (TextView)findViewById(R.id.texto);
+        final ImageView img = (ImageView)findViewById(R.id.imagen);
 
         Bundle mibundel = getIntent().getExtras();
-        Titular t = (Titular) mibundel.getSerializable("mibundel");
+        Titular t = (Titular) mibundel.getSerializable("TitulaKey");
         otroSaludo.setText(t.toString());
+
+
 
     }
 }
