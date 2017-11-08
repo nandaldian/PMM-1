@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/MnuOpc1"
+        android:title="Click" />
+    <item
+        android:id="@+id/MnuOpc2"
+        android:title="Te gustan los clicks?" />
+    <item
+        android:id="@+id/MnuOpc3"
+        android:title="Acerca de ">
+        <menu>
+            <item
+                android:id="@+id/SubMnuOpc1"
+                android:title="LinearLayout" />
+            <item
+                android:id="@+id/SubMnuOpc2"
+                android:title="RelativeLayout" />
+        </menu>
+    </item>
+</menu>
