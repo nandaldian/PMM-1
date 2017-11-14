@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/home/chrcuc/PMM/FigurasAleatorias/app/build/intermediates/res/merged/debug/mipmap-xxhdpi/ic_launcher.png",
+        "source": "/home/chrcuc/PMM/FigurasAleatorias/app/src/main/res/mipmap-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/chrcuc/PMM/FigurasAleatorias/app/build/intermediates/res/merged/debug/mipmap-xxhdpi/ic_launcher_round.png",
+        "source": "/home/chrcuc/PMM/FigurasAleatorias/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png"
+    }
+]

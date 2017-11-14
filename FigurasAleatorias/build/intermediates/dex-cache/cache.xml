@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="/home/chrcuc/.android/build-cache/ecbedb5ce67679db5bbde2f7ad518fda747bd37e/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="2e92aa0163544a804a0b34f169ca61801770839a">
+        <dex dex="/home/chrcuc/PMM/FigurasAleatorias/app/build/intermediates/pre-dexed/debug/classes_bb679dd2ba2a3480926049e5e67855369f30c425.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/chrcuc/.android/build-cache/53d1029733db9fa29631ab12349da8f590a30145/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="18d31838aa4fcc768a8a0516e22cc13b94655d89">
+        <dex dex="/home/chrcuc/PMM/FigurasAleatorias/app/build/intermediates/pre-dexed/debug/classes_8655f3b4a771038bac00f122a652353c3db0329b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/chrcuc/.android/build-cache/107392875c33b48ec666f8ecda933ed9670b09ca/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="8df0e365e40beb151bc42dee20817721a6cab7b0">
+        <dex dex="/home/chrcuc/PMM/FigurasAleatorias/app/build/intermediates/pre-dexed/debug/classes_839d8b1cf28017bf9fc182f0312a5ad2f8dca6b0.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/chrcuc/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/26.0.0-alpha1/support-annotations-26.0.0-alpha1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="023ee503b631f69511e335a061ea008f8da60f40">
+        <dex dex="/home/chrcuc/PMM/FigurasAleatorias/app/build/intermediates/pre-dexed/debug/support-annotations-26.0.0-alpha1_05ccc4f2115d2e73cb8780b4964e7c976b4ecd64.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/chrcuc/.android/build-cache/b66de6ea6aee208b715e58ff3d6135b31988f6ea/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="9935891f23923f39d002087085d9696568a9f657">
+        <dex dex="/home/chrcuc/PMM/FigurasAleatorias/app/build/intermediates/pre-dexed/debug/classes_52b763986ec962700ce83b8ee640150228b9c929.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/chrcuc/.android/build-cache/24ab67569934ddb94193a61350bf1de5645d4b21/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="952944218ecedea1554a513dec0c14d570642843">
+        <dex dex="/home/chrcuc/PMM/FigurasAleatorias/app/build/intermediates/pre-dexed/debug/classes_0dddeb4a2b89618c8e241325e59a4ca5558e1151.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/chrcuc/.android/build-cache/4d3b82873ddfba0136e556e940d7fa0940b2f529/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="88246166d5afb106f532f6e6deae683c66b42c89">
+        <dex dex="/home/chrcuc/PMM/FigurasAleatorias/app/build/intermediates/pre-dexed/debug/classes_1e95a361b2495325179745002bb3ff1b1f79836d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/chrcuc/.android/build-cache/c6aa740285078cc35479e34c5e15a741b63d8a7f/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="47471eb19df288158b00b8d9cfa41bce7373f5cc">
+        <dex dex="/home/chrcuc/PMM/FigurasAleatorias/app/build/intermediates/pre-dexed/debug/classes_d2b7ed0b71275f185e0732143986d0900cd7f746.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/chrcuc/Android/Sdk/extras/m2repository/com/android/support/constraint/constraint-layout-solver/1.0.2/constraint-layout-solver-1.0.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
+        <dex dex="/home/chrcuc/PMM/FigurasAleatorias/app/build/intermediates/pre-dexed/debug/constraint-layout-solver-1.0.2_a0f5e9977de41f9352a96b64a6eb803133afc3c8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/chrcuc/.android/build-cache/76c223045a26899a33e1e11618811751f80fdf55/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="fcd01fd11233459f546c437ec927e9b61bf7caf1">
+        <dex dex="/home/chrcuc/PMM/FigurasAleatorias/app/build/intermediates/pre-dexed/debug/classes_ff4feaa8d2cd6c561c43aa4e78601af09a25cab7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/chrcuc/.android/build-cache/bdd20abf8dd6bcd3a3aa5108b2837fb77f1b4327/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
+        <dex dex="/home/chrcuc/PMM/FigurasAleatorias/app/build/intermediates/pre-dexed/debug/classes_8ac00e7c52d4fdf66f57124660876ccca5b41365.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/chrcuc/.android/build-cache/415abd622e1a303a5d834343da5238b62a7e0b47/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/home/chrcuc/PMM/FigurasAleatorias/app/build/intermediates/pre-dexed/debug/classes_4a99f191b283db6c5a74adb2925a54c0675ddcbb.jar" />
+    </item>
+
+</items>

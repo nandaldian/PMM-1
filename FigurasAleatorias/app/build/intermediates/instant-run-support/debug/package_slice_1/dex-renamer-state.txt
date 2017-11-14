@@ -1,0 +1,4 @@
+#Tue Nov 07 12:27:10 CET 2017
+base.0=/home/chrcuc/PMM/FigurasAleatorias/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_1
+renamed.0=classes.dex
+file.0=/home/chrcuc/PMM/FigurasAleatorias/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_1/classes.dex
