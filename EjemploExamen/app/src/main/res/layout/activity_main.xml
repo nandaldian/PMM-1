@@ -17,7 +17,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="16dp"
-        android:text="TextView" />
+        android:text="Elige Zona" />
 
     <Spinner
         android:id="@+id/spinner"
@@ -46,10 +46,12 @@
         android:id="@+id/radioGroup">
 
         <RadioButton
+            android:id="@+id/normal"
             android:layout_width="175dp"
             android:layout_height="wrap_content"
             android:text="tarifa normal" />
         <RadioButton
+            android:id="@+id/urgente"
             android:layout_width="175dp"
             android:layout_height="wrap_content"
             android:text="Tarifa urgente"/>
