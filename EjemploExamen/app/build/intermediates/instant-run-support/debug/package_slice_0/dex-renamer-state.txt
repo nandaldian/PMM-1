@@ -1,0 +1,4 @@
+#Thu Nov 16 20:31:10 CET 2017
+base.0=C\:\\Users\\usuario\\Desktop\\Nueva carpeta\\EjemploExamen\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\1
+renamed.0=classes.dex
+file.0=C\:\\Users\\usuario\\Desktop\\Nueva carpeta\\EjemploExamen\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\1\\classes.dex

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.chrcuc.ejemploexamen.Europe">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Europa es uno de los continentes que conforman el supercontinente euroasiático, situado entre los paralelos 36º y 70º de latitud norte. De forma convencional y por motivos histórico-culturales es considerada un continente, tras la delimitación realizada por el geógrafo ruso Vasili Tatíshchev quien deseaba señalar la pertenencia de Rusia a Europa y a Asia.1​ Las fronteras de Europa y su población son objeto de controversia, ya que el término continente puede referirse a un bien cultural y político o a distinciones fisiográficas. Andreas Kaplan describe a Europa como «una máxima diversidad cultural en una superficie geográfica mínima».2​"/>
+</android.support.constraint.ConstraintLayout>

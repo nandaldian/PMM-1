@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.chrcuc.ejemploexamen.America">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Las relaciones entre África y América Latina no suelen ser objeto de estudio.
+         Sin embargo, con el aumento y dinamismo del comercio Sur-Sur, o sea entre los países en desarrollo,
+         cabe preguntarse en qué medida los lazos africano-latinoamericanos participan del fenómeno.
+         A nivel comercial, las relaciones interregionales permanecen a niveles bastante bajos y presentan
+         altos grados de concentración en términos del número de países involucrados y productos intercambiados.
+         Sin embargo, los vínculos han aumentado mucho desde hace algunos años, con su consiguiente diversificación.
+          Si bien es muy difícil saber con exactitud el volumen de las inversiones interregionales debido a la falta de base de datos,
+           se puede deducir que es un fenómeno aún en una fase inicial. Las pocas veces que se trata el tema
+            comercial entre África y América Latina, se pone en realce la competencia existente entre esas dos regiones
+            en el mercado mundial y se estudia el caso de sus intercambios con la República Popular de China. Esta afirmación,
+             no obstante matizada, debe ser estudiada en el tiempo, pues las relaciones comerciales Sur-Sur han evolucionado
+             muy rápido estos últimos años. Si bien los lazos económicos se mantienen relativamente bajos entre
+             África y América Latina, se puede explicar en parte por los obstáculos resistentes a su buen desarrollo.
+             Sin embargo, hoy en día las relaciones interregionales no se pueden resumir a un aspecto meramente económico.
+              En efecto, varios países de América Latina han puesto en marcha políticas específicas hacia el continente africano,
+               en particular en los casos de Brasil y Venezuela. Es así como también otros estados latinoamericanos, en el caso
+                de Chile y México, han despertado un interés progresivo por África, aunque por ahora de una manera menos planificada.
+                 Estas incipientes tendencias permiten pensar que el desarrollo de las relaciones africanolatinoamericanas
+                 son potenciales aunque queda mucho camino por recorrer. De todos los casos estudiados, Brasil parece ser el
+                 país con vínculos más arraigados con el continente africano"/>
+
+</android.support.constraint.ConstraintLayout>

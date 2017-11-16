@@ -1,12 +1,15 @@
 package com.example.chrcuc.ejemploexamen;
 
 import android.graphics.drawable.Drawable;
+import android.os.Parcelable;
+
+import java.io.Serializable;
 
 /**
  * Created by chrcuc on 14/11/17.
  */
 
-public class Pais {
+public class Pais implements Serializable{
     private String nombre;
     private  double precio;
     private String zona;

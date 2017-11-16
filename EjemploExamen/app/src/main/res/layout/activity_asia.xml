@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.chrcuc.ejemploexamen.Asia">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="El Imperio español en Asia y el Pacífico comprendía varios territorios insulares, incluidas las islas Filipinas, las Palaos, las Marianas, y las Carolinas. Estos territorios oceánicos estuvieron bajo soberanía española desde finales del siglo XVI hasta 1898.
+
+En 1521, el explorador Fernando de Magallanes tomó posesión de las islas Filipinas en nombre de la corona española, aunque el primer asentamiento español data de 1565, cuando se fundó la ciudad de Cebú. La colonización española duró más de tres siglos, desde 1565 hasta 1898, año en el que España cedió sus últimas posesiones en Asia por la guerra hispano-estadounidense. En 1899 también cedió las islas de Micronesia al Imperio alemán. Durante este largo período, España realizó numerosas expediciones al océano Pacífico desde América, resultando en la exploración y descubrimiento de numerosos territorios."/>
+
+</android.support.constraint.ConstraintLayout>

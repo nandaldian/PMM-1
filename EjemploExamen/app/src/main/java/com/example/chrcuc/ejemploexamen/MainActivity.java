@@ -2,6 +2,7 @@ package com.example.chrcuc.ejemploexamen;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -30,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private Pais[] pais = new Pais[]{
-            new Pais("Asia y oceania",20,"A",R.drawable.asiaoceania),
+            new Pais("Asia y oceania",20,"A", R.drawable.asiaoceania),
             new Pais("America",30,"B",R.drawable.america),
             new Pais("Europa",10,"C",R.drawable.europa)
     };
@@ -94,9 +95,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView arg0, View arg1, int position, long id) {
                 String mensaje = "Zona seleccionada: " + pais[position].getNombre();
                 showToast(mensaje);
-                paso_datos.putString("ZONA",pais[position].getZona());
-                paso_datos.putString("PAIS", pais[position].getNombre());
-                paso_datos.putInt("FOTO",pais[position].getFoto());
+                paso_datos.putSerializable("PAIS",pais[miSpinner.getSelectedItemPosition()]);
             }
 
             public void onNothingSelected(AdapterView<?> adapterView) {
@@ -118,6 +117,7 @@ public class MainActivity extends AppCompatActivity {
                 paso_datos.putString("PESO",peso);
                 String añadido;String tarifa;
                 double pe = Double.parseDouble(peso);
+
                     chosed = pais[pos].getPrecio();
                     total = comprobar(chosed);
                     chosed = pesotarifa(total);
@@ -147,25 +147,22 @@ public class MainActivity extends AppCompatActivity {
             }
 
             public double pesotarifa(double kg) {
-                if (kg < 6) {
+                if (kg < 6.00) {
                     kg = kg * 1;
 
-                } else if (kg >= 6 && kg <= 10) {
+                } else if (kg >= 6.00 && kg <= 10.00) {
                     kg = kg * 1.5;
                 } else {
-                    kg = kg * 2;
+                    kg = kg * 2.00;
                 }
                 return kg;
             }
 
             public double comprobar(double precio) {
-
-                if (r1.isChecked()) {
-
-                }
-                else if (r2.isChecked())
+                if (r2.isChecked()){
                     precio = precio + precio * 0.3;
-                return precio;
+                return precio;}
+                else return precio;
             }
             public String tarifa(){
                 String x="";
@@ -189,8 +186,12 @@ public class MainActivity extends AppCompatActivity {
 
             switch (item.getItemId()) {
                 case R.id.AcercaDe:
+                    Intent one = new Intent(MainActivity.this, AcercaDe.class);
+                    startActivity(one);
                     return true;
                 case R.id.Dibujo:
+                    Intent two = new Intent(MainActivity.this, Picture.class);
+                    startActivity(two);
                     return true;
             }
             return super.onOptionsItemSelected(item);
