@@ -34,7 +34,8 @@
         android:layout_height="175dp"
         android:layout_alignTop="@+id/textView"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/index"/>
 
     <RadioGroup
         android:layout_width="175dp"
@@ -49,7 +50,7 @@
             android:id="@+id/normal"
             android:layout_width="175dp"
             android:layout_height="wrap_content"
-            android:text="tarifa normal" />
+            android:text="Tarifa normal" />
         <RadioButton
             android:id="@+id/urgente"
             android:layout_width="175dp"

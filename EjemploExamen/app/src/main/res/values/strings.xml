@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">EjemploExamen</string>
+    <string name="action_settings">Settings</string>
+    <string name="coste_total">Coste total</string>
 </resources>
