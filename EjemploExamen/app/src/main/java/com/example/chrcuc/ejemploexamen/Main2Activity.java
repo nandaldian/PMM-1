@@ -55,16 +55,22 @@ public class Main2Activity extends AppCompatActivity {
         nom=(TextView)findViewById(R.id.TVzona);
         switch (itemMnuContex.getItemId()) {
             case R.id.Pais1:
+                if (pais.getNombre().equalsIgnoreCase("America")){
+                    nom.setText("America");
                 Intent intentone= new Intent(Main2Activity.this,Asia.class);
-                startActivity(intentone);
+                startActivity(intentone);}
                 return true;
             case R.id.Pais2:
+                if (pais.getNombre().equalsIgnoreCase("Asia y oceania")){
+                    nom.setText("Asia y oceania");
                 Intent intent= new Intent(Main2Activity.this,America.class);
-                startActivity(intent);
+                startActivity(intent);}
                 return true;
             case R.id.Pais3:
+                if (pais.getNombre().equalsIgnoreCase("Europa")){
+                    nom.setText("Europa");
                 Intent intent3= new Intent(Main2Activity.this,Europe.class);
-                startActivity(intent3);
+                startActivity(intent3);}
                 return true;
 
             default:

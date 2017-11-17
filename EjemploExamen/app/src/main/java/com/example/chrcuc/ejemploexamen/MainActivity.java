@@ -120,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
 
                     chosed = pais[pos].getPrecio();
                     total = comprobar(chosed);
-                    chosed = pesotarifa(total);
+                    chosed = chosed+pesotarifa(pe);
                     String g=Double.toString(chosed);
                     añadido = adicional();
                     tarifa = tarifa();
@@ -147,15 +147,16 @@ public class MainActivity extends AppCompatActivity {
             }
 
             public double pesotarifa(double kg) {
+                double x=0;
                 if (kg < 6.00) {
-                    kg = kg * 1;
+                    x = kg * 1;
 
                 } else if (kg >= 6.00 && kg <= 10.00) {
-                    kg = kg * 1.5;
-                } else {
-                    kg = kg * 2.00;
+                    x = kg * 1.5;
+                } else if(kg>10){
+                    x = kg * 2.00;
                 }
-                return kg;
+                return x;
             }
 
             public double comprobar(double precio) {

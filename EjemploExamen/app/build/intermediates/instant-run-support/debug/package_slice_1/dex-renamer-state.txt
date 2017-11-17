@@ -1,4 +1,4 @@
-#Thu Nov 16 20:31:14 CET 2017
-base.0=C\:\\Users\\usuario\\Desktop\\Nueva carpeta\\EjemploExamen\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\2
+#Fri Nov 17 09:33:02 CET 2017
+base.0=/home/chrcuc/PMM/EjemploExamen/app/build/intermediates/transforms/dexMerger/debug/2
 renamed.0=classes.dex
-file.0=C\:\\Users\\usuario\\Desktop\\Nueva carpeta\\EjemploExamen\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\2\\classes.dex
+file.0=/home/chrcuc/PMM/EjemploExamen/app/build/intermediates/transforms/dexMerger/debug/2/classes.dex

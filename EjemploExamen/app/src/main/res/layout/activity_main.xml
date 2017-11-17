@@ -86,7 +86,7 @@
         android:layout_below="@+id/checkBox"
         android:layout_alignLeft="@+id/spinner"
         android:layout_alignStart="@+id/spinner"
-        android:text="Introduce el peso"/>
+        android:hint="Introduce el peso"/>
 
     <Button
         android:id="@+id/button"

@@ -1,95 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
 <instant-run
-    abi="armeabi-v7a,armeabi"
-    api-level="23"
-    build-mode="COLD"
-    density="xhdpi"
+    abi="x86"
+    api-level="27"
+    build-mode="HOT_WARM"
+    density="420dpi"
     format="10"
     plugin-version="3.0.0"
-    timestamp="1510863292463"
-    token="-647996846302802140"
-    verifier="COLD_SWAP_REQUESTED" >
+    timestamp="1510911021298"
+    token="-2405957984017360886"
+    verifier="COMPATIBLE" >
 
     <task
         name="javac"
-        duration="4316" />
+        duration="42" />
     <task
         name="instant-run-dex"
-        duration="0" />
+        duration="5" />
     <task
         name="instant-run-transform"
-        duration="0" />
+        duration="8" />
     <task
         name="verifier"
         duration="0" />
 
+    <artifact
+        location="/home/chrcuc/PMM/EjemploExamen/app/build/intermediates/reload-dex/debug/classes.dex"
+        type="RELOAD_DEX" />
+
     <build
         build-mode="FULL"
-        timestamp="1510860600879"
+        timestamp="1510908291031"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
-            location="C:\Users\usuario\Desktop\Nueva carpeta\EjemploExamen\app\build\intermediates\split-apk\debug\dep\dependencies.apk"
+            location="/home/chrcuc/PMM/EjemploExamen/app/build/intermediates/split-apk/debug/slices/slice_7.apk"
             type="SPLIT" />
         <artifact
-            location="C:\Users\usuario\Desktop\Nueva carpeta\EjemploExamen\app\build\intermediates\split-apk\debug\slices\slice_0.apk"
+            location="/home/chrcuc/PMM/EjemploExamen/app/build/intermediates/split-apk/debug/slices/slice_9.apk"
             type="SPLIT" />
         <artifact
-            location="C:\Users\usuario\Desktop\Nueva carpeta\EjemploExamen\app\build\intermediates\split-apk\debug\slices\slice_1.apk"
+            location="/home/chrcuc/PMM/EjemploExamen/app/build/intermediates/split-apk/debug/slices/slice_3.apk"
             type="SPLIT" />
         <artifact
-            location="C:\Users\usuario\Desktop\Nueva carpeta\EjemploExamen\app\build\intermediates\split-apk\debug\slices\slice_2.apk"
+            location="/home/chrcuc/PMM/EjemploExamen/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
             type="SPLIT" />
         <artifact
-            location="C:\Users\usuario\Desktop\Nueva carpeta\EjemploExamen\app\build\intermediates\split-apk\debug\slices\slice_3.apk"
+            location="/home/chrcuc/PMM/EjemploExamen/app/build/intermediates/split-apk/debug/dep/dependencies.apk"
             type="SPLIT" />
         <artifact
-            location="C:\Users\usuario\Desktop\Nueva carpeta\EjemploExamen\app\build\intermediates\split-apk\debug\slices\slice_4.apk"
+            location="/home/chrcuc/PMM/EjemploExamen/app/build/intermediates/split-apk/debug/slices/slice_8.apk"
             type="SPLIT" />
         <artifact
-            location="C:\Users\usuario\Desktop\Nueva carpeta\EjemploExamen\app\build\intermediates\split-apk\debug\slices\slice_5.apk"
+            location="/home/chrcuc/PMM/EjemploExamen/app/build/intermediates/split-apk/debug/slices/slice_6.apk"
             type="SPLIT" />
         <artifact
-            location="C:\Users\usuario\Desktop\Nueva carpeta\EjemploExamen\app\build\intermediates\split-apk\debug\slices\slice_6.apk"
+            location="/home/chrcuc/PMM/EjemploExamen/app/build/intermediates/split-apk/debug/slices/slice_2.apk"
             type="SPLIT" />
         <artifact
-            location="C:\Users\usuario\Desktop\Nueva carpeta\EjemploExamen\app\build\intermediates\split-apk\debug\slices\slice_7.apk"
+            location="/home/chrcuc/PMM/EjemploExamen/app/build/intermediates/split-apk/debug/slices/slice_5.apk"
             type="SPLIT" />
         <artifact
-            location="C:\Users\usuario\Desktop\Nueva carpeta\EjemploExamen\app\build\intermediates\split-apk\debug\slices\slice_8.apk"
+            location="/home/chrcuc/PMM/EjemploExamen/app/build/intermediates/split-apk/debug/slices/slice_0.apk"
             type="SPLIT" />
         <artifact
-            location="C:\Users\usuario\Desktop\Nueva carpeta\EjemploExamen\app\build\intermediates\split-apk\debug\slices\slice_9.apk"
+            location="/home/chrcuc/PMM/EjemploExamen/app/build/intermediates/split-apk/debug/slices/slice_1.apk"
             type="SPLIT" />
         <artifact
-            location="C:\Users\usuario\Desktop\Nueva carpeta\EjemploExamen\app\build\outputs\apk\debug\app-debug.apk"
+            location="/home/chrcuc/PMM/EjemploExamen/app/build/outputs/apk/debug/app-debug.apk"
             type="SPLIT_MAIN" />
     </build>
     <build
         build-mode="COLD"
-        ir-eligibility="CLASS_ADDED"
-        timestamp="1510862685552"
+        timestamp="1510910756467"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
-            location="C:\Users\usuario\Desktop\Nueva carpeta\EjemploExamen\app\build\intermediates\split-apk\debug\slices\slice_2.apk"
-            type="SPLIT" />
-        <artifact
-            location="C:\Users\usuario\Desktop\Nueva carpeta\EjemploExamen\app\build\intermediates\split-apk\debug\slices\slice_3.apk"
-            type="SPLIT" />
-        <artifact
-            location="C:\Users\usuario\Desktop\Nueva carpeta\EjemploExamen\app\build\intermediates\split-apk\debug\slices\slice_9.apk"
+            location="/home/chrcuc/PMM/EjemploExamen/app/build/intermediates/split-apk/debug/slices/slice_7.apk"
             type="SPLIT" />
     </build>
     <build
-        build-mode="COLD"
-        timestamp="1510863126767"
-        verifier="COLD_SWAP_REQUESTED" >
+        build-mode="HOT_WARM"
+        timestamp="1510910912933"
+        verifier="COMPATIBLE" >
         <artifact
-            location="C:\Users\usuario\Desktop\Nueva carpeta\EjemploExamen\app\build\outputs\apk\debug\app-debug.apk"
-            type="SPLIT_MAIN" />
+            location="/home/chrcuc/PMM/EjemploExamen/app/build/intermediates/builds/debug/1510910912933/classes.dex"
+            type="RELOAD_DEX" />
     </build>
     <build
-        build-mode="COLD"
-        timestamp="1510863292463"
-        verifier="COLD_SWAP_REQUESTED" />
+        build-mode="HOT_WARM"
+        timestamp="1510910940364"
+        verifier="COMPATIBLE" >
+        <artifact
+            location="/home/chrcuc/PMM/EjemploExamen/app/build/intermediates/builds/debug/1510910940364/classes.dex"
+            type="RELOAD_DEX" />
+    </build>
+    <build
+        build-mode="HOT_WARM"
+        timestamp="1510910947163"
+        verifier="COMPATIBLE" >
+        <artifact
+            location="/home/chrcuc/PMM/EjemploExamen/app/build/intermediates/builds/debug/1510910947163/classes.dex"
+            type="RELOAD_DEX" />
+    </build>
+    <build
+        build-mode="HOT_WARM"
+        timestamp="1510910954074"
+        verifier="COMPATIBLE" >
+        <artifact
+            location="/home/chrcuc/PMM/EjemploExamen/app/build/intermediates/builds/debug/1510910954074/classes.dex"
+            type="RELOAD_DEX" />
+    </build>
+    <build
+        build-mode="HOT_WARM"
+        timestamp="1510910978135"
+        verifier="COMPATIBLE" >
+        <artifact
+            location="/home/chrcuc/PMM/EjemploExamen/app/build/intermediates/builds/debug/1510910978135/classes.dex"
+            type="RELOAD_DEX" />
+    </build>
+    <build
+        build-mode="HOT_WARM"
+        timestamp="1510910986070"
+        verifier="COMPATIBLE" >
+        <artifact
+            location="/home/chrcuc/PMM/EjemploExamen/app/build/intermediates/builds/debug/1510910986070/classes.dex"
+            type="RELOAD_DEX" />
+    </build>
+    <build
+        build-mode="HOT_WARM"
+        timestamp="1510910993455"
+        verifier="COMPATIBLE" >
+        <artifact
+            location="/home/chrcuc/PMM/EjemploExamen/app/build/intermediates/builds/debug/1510910993455/classes.dex"
+            type="RELOAD_DEX" />
+    </build>
+    <build
+        build-mode="HOT_WARM"
+        timestamp="1510911021298"
+        verifier="COMPATIBLE" >
+        <artifact
+            location="/home/chrcuc/PMM/EjemploExamen/app/build/intermediates/reload-dex/debug/classes.dex"
+            type="RELOAD_DEX" />
+    </build>
 
 </instant-run>
