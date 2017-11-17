@@ -1,0 +1,10 @@
+COMMAND=PREDEX_LIBRARY_TO_DEX_ARCHIVE
+FILE.path=/home/chrcuc/PMM/ExamenPizzaChristianCano/?/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/b084af8f8fad48cb4fdfa5f163b437a3/jars/classes.jar
+FILE.hash=0c206c0fd155cd06ede70c1ecb98ea88cf3a09f2d8f4afb23bb2c84f8039c260
+DX_VERSION=1.14
+JUMBO_MODE=true
+OPTIMIZE=true
+DEXER_TOOL=DX
+CACHE_KEY_VERSION=4
+MIN_SDK_VERSION=15
+IS_DEBUGGABLE=true
