@@ -113,8 +113,9 @@ public class MainActivity extends AppCompatActivity {
                 int canti = Integer.parseInt(cantidad);
                 int pos = miSpinner.getSelectedItemPosition();
                 int precio = pizza[pos].getPrecio();
+                int cont =0;
 
-                int paso1 = añadido(precio);
+                int paso1 = añadido(cont);
                 String comple = Integer.toString(paso1);
                 paso_datos.putString("EXTRAS", comple);
                 int paso2 = cantidad(canti, precio);
@@ -132,21 +133,24 @@ public class MainActivity extends AppCompatActivity {
 
             }
 
-            public int añadido(int precio) {
+            public int añadido(int cont) {
                 if (ch1.isChecked())
-                    precio = precio + 1;
+                    cont++;
                 if (ch2.isChecked())
-                    precio = precio + 1;
+                    cont++;
                 if (ch3.isChecked())
-                    precio = precio + 1;
-                return precio;
+                    cont++;
+                return cont;
             }
 
             public double envio(int precio) {
                 double total = 0;
-                if (r2.isChecked())
+                if (r2.isChecked()){
                     total = precio + precio * 0.1;
-                return total;
+                return total;}
+                else
+                    return precio;
+
             }
 
             public int cantidad(int numero, int precio) {

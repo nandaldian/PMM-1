@@ -96,7 +96,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="23dp"
-        android:hint="Introduce el peso" />
+        android:hint="Introduce la cantidad" />
 
     <Button
         android:id="@+id/button"
