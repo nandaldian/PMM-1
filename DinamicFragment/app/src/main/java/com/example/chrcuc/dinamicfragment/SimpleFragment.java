@@ -23,7 +23,8 @@ public class SimpleFragment extends Fragment {
 
     @Override
     public void onCreate( Bundle savedInstanceState) {
-        mNum = getArguments().getInt("num");
+         super.onCreate(savedInstanceState);
+         mNum = getArguments().getInt("num");
     }
 
     @Override
