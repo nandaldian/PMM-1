@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
-    tools:context="com.example.chrcuc.examenpizzachristiancano.MainActivity">
+    tools:context="com.example.chrcuc.proyectofinal.MainActivity">
 
     <TextView
         android:layout_width="wrap_content"
@@ -15,7 +15,7 @@
         android:layout_marginLeft="21dp"
         android:layout_marginStart="21dp"
         android:layout_marginTop="41dp"
-        android:text="¡¡PIZZERIA ONLINE!!"
+        android:text="Los mejores sandwiches del mundo!!!"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -29,7 +29,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:src="@drawable/logopizza"/>
+        android:src="@drawable/logo"/>
 
     <Spinner
         android:id="@+id/spinner"
@@ -69,7 +69,7 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/spinner"
         android:layout_marginTop="35dp"
-        android:text="+ Grande" />
+        android:text="Salsas" />
 
     <CheckBox
         android:id="@+id/cb2"
@@ -77,7 +77,7 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/cb1"
         android:layout_centerHorizontal="true"
-        android:text="+Ingredientes" />
+        android:text="Refresco" />
 
     <CheckBox
         android:id="@+id/cb3"
@@ -86,7 +86,7 @@
         android:layout_alignBottom="@+id/cb2"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:text="Extra Queso" />
+        android:text="Patatas" />
 
     <EditText
         android:id="@+id/editText"
@@ -108,14 +108,5 @@
         android:layout_marginBottom="44dp"
         android:text="Hacer calculos" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="150dp"
-        android:layout_height="40dp"
-        android:layout_alignBaseline="@+id/button"
-        android:layout_alignBottom="@+id/button"
-        android:layout_toEndOf="@+id/editText"
-        android:layout_toRightOf="@+id/editText"
-        android:text="TextView" />
 
 </RelativeLayout>
