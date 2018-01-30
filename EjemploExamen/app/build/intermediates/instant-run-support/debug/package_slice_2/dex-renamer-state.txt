@@ -1,4 +1,0 @@
-#Fri Nov 17 10:45:40 CET 2017
-base.0=/home/chrcuc/PMM/EjemploExamen/app/build/intermediates/transforms/dexMerger/debug/3
-renamed.0=classes.dex
-file.0=/home/chrcuc/PMM/EjemploExamen/app/build/intermediates/transforms/dexMerger/debug/3/classes.dex
