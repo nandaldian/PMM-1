@@ -25,6 +25,7 @@ public class ActivityLog extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(ActivityLog.this,ActivityRegistro.class);
                 startActivityForResult(intent,0);
+                finish();
             }
         });
 

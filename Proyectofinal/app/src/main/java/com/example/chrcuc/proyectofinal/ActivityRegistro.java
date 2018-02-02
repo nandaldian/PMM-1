@@ -17,6 +17,8 @@ public class ActivityRegistro extends AppCompatActivity {
         setContentView(R.layout.activity_registro2);
         this.setTitle("Registro");
 
+
+
         databaseHelper = new DatabaseHelper(this);
 
 
@@ -32,7 +34,7 @@ public class ActivityRegistro extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 databaseHelper.open();
-                databaseHelper.insertItem(editText.toString(),editText1.toString());
+                databaseHelper.insert(editText.toString(),editText1.toString());
                 databaseHelper.close();
                 Intent intent = new Intent(ActivityRegistro.this,Imagen.class);
                 startActivity(intent);

@@ -12,87 +12,68 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 
 public class DatabaseHelper {
+
+
     private Context mCtx = null;
-    private DataBaseHelperInternal mDbHelper = null;
     private SQLiteDatabase mDb = null;
-    private static final String DATABASE_NAME = "Clientes";
+    private DataBaseInternal dataBaseInternal = null;
+    private static final String DATABASE_NAME = "dbsandwicheria";
     private static final int DATABASE_VERSION = 3;
+
+
     // tabla y campos
+
     private static final String DATABASE_TABLE_TODOLIST = "Clientes";
     public static final String SL_ID = "user";
     public static final String SL_ITEM = "password";
 
 
     // SQL de creación de la tabla
+
     private static final String DATABASE_CREATE_TODOLIST =
-            "create table "+ DATABASE_TABLE_TODOLIST +" ("+SL_ID+" integer primary key, "+SL_ITEM+" text not null)";
+            "create table "+ DATABASE_TABLE_TODOLIST +" ("+SL_ID+" text not null, "+SL_ITEM+" text not null)";
+
     //constructor
+
     public DatabaseHelper(Context ctx) {
-        this.mCtx = ctx;
+        this.mCtx = ctx ;
     }
-    //clase privada para control de la SQLite
-    private static class DataBaseHelperInternal extends SQLiteOpenHelper {
-        public DataBaseHelperInternal(Context context) {
-            super(context, DATABASE_NAME, null, DATABASE_VERSION);		}
+    public static class DataBaseInternal extends SQLiteOpenHelper{
+        public DataBaseInternal (Context context){
+            super(context,DATABASE_NAME,null,DATABASE_VERSION);
+
+
+        }
 
         @Override
-        public void onCreate(SQLiteDatabase db) {
-            createTables(db);
+        public void onCreate(SQLiteDatabase sqLiteDatabase) {
+            sqLiteDatabase.execSQL(DATABASE_CREATE_TODOLIST);
         }
+
         @Override
-        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-            deleteTables(db);
-            createTables(db);
-        }
-        private void createTables(SQLiteDatabase db) {
-            db.execSQL(DATABASE_CREATE_TODOLIST);
+        public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+
         }
 
-        private void deleteTables(SQLiteDatabase db) {
-            db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE_TODOLIST);
-        }
     }
-
-    public DatabaseHelper open()  {
-        mDbHelper = new DataBaseHelperInternal(mCtx);
-        mDb = mDbHelper.getWritableDatabase();
+    public DatabaseHelper open(){
+        dataBaseInternal = new DataBaseInternal(mCtx);
+        mDb = dataBaseInternal.getWritableDatabase();
         return this;
     }
-
-    public void close() {
-        mDbHelper.close();
+    public void close(){
+        dataBaseInternal.close();
     }
+    public long insert( String user, String password){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("user",user);
+        contentValues.put("password",password);
 
-    //obtener todos los elementos
-    public Cursor getItems() {
-        return mDb.query(DATABASE_TABLE_TODOLIST, new String[] {SL_ID, SL_ITEM }, null, null, null, null,null);
+        return mDb.insert("Clientes",null,contentValues);
+
     }
-
-
-    //crear elemento
-    public long insertItem(String password, String user){
-        ContentValues initialValues = new ContentValues();
-        initialValues.put(SL_ITEM, password);
-        initialValues.put(SL_ID,user);
-        return mDb.insert(DATABASE_TABLE_TODOLIST, null, initialValues);
-    }
-
-    //borrar
-    public int delete(int mLastRowSelected) {
-        return mDb.delete(DATABASE_TABLE_TODOLIST, SL_ID + "=?", new String[]{ Integer.toString(mLastRowSelected)});
-    }
-
-    //obtener elemento
-    public Cursor getItem(int itemId){
-        return mDb.rawQuery(" select "+ SL_ITEM+","+ SL_ID + " from " + DATABASE_TABLE_TODOLIST  + " where " + SL_ID + "=?",new String[]{Integer.toString(itemId)});
-    }
-
-    //actualiza
-    public int updateItem(int ident, String item, String place,
-                          String description, int importance) {
-        ContentValues cv = new ContentValues();
-        cv.put(SL_ITEM, item);
-        return mDb.update(DATABASE_TABLE_TODOLIST, cv, SL_ID + "=?", new String[]{Integer.toString(ident)});
+    public Cursor getItems(){
+        return mDb.query(DATABASE_TABLE_TODOLIST,new String[]{SL_ID,SL_ITEM},null,null,null,null,null);
     }
 
 

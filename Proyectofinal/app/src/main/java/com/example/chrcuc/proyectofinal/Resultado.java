@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class Resultado extends AppCompatActivity {
-    private Pizza pizza;
+    private Sandwich sandwich;
     TextView nom;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,15 +28,15 @@ public class Resultado extends AppCompatActivity {
         nom =(TextView)findViewById(R.id.TVpizza);
         final CheckBox checkBox = (CheckBox)findViewById(R.id.checkBox);
         final DigitalClock dc = (DigitalClock)findViewById(R.id.reloj);
-        pizza = (Pizza)bundle.getSerializable("PIZZA");
-        String a = Integer.toString(pizza.getPrecio());
-        nom.setText(pizza.getNombre());
+        sandwich = (Sandwich) bundle.getSerializable("PIZZA");
+        String a = Integer.toString(sandwich.getPrecio());
+        nom.setText(sandwich.getNombre());
         preciobase.setText(a);
         extras.setText(bundle.getString("EXTRAS"));
         cantidad.setText(bundle.getString("CANTIDAD"));
         Envio.setText(bundle.getString("ENVIO"));
         coste.setText(bundle.getString("TOTAL"));
-        img.setImageResource(pizza.getFoto());
+        img.setImageResource(sandwich.getFoto());
 
         checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override

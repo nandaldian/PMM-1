@@ -1,7 +1,10 @@
-package com.example.chrcuc.proyectofinal;
+package com.example.chrcuc.sandwicheria;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.SQLException;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -18,8 +21,12 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+    DatabaseHelper mDbHelper;
     static class ViewHolder
     {
         TextView nombre;
@@ -27,12 +34,12 @@ public class MainActivity extends AppCompatActivity {
         TextView ingre;
         ImageView img;
     }
-    private Sandwich[] pizza = new Sandwich[]{
-            new Sandwich("Bacon y Huevo",12,"Bacon/Huevo",R.drawable.baconhuevo),
-            new Sandwich("Cangrejo",15,"Cangrejo/Mayonesa",R.drawable.cangrejo),
-            new Sandwich("Campiñones",14,"Champiñones/Queso",R.drawable.champinyones),
-            new Sandwich("Peperoni",13,"Peperoni/Queso",R.drawable.peperoni),
-            new Sandwich("Pollo",13,"Pollo/Queso",R.drawable.pollo),
+    private Sandwiches[] pizza = new Sandwiches[]{
+            new Sandwiches("Bacon y Huevo",12,"Bacon/Huevo",R.drawable.baconhuevo),
+            new Sandwiches("Cangrejo",15,"Cangrejo/Mayonesa",R.drawable.cangrejo),
+            new Sandwiches("Campiñones",14,"Champiñones/Queso",R.drawable.champinyones),
+            new Sandwiches("Peperoni",13,"Peperoni/Queso",R.drawable.peperoni),
+            new Sandwiches("Pollo",13,"Pollo/Queso",R.drawable.pollo),
     };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,16 +47,24 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         this.setTitle("Haz tu pedido");
 
+        mDbHelper = new DatabaseHelper(this);
+        try {
+            fillData();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            showMessage(R.string.dataError);
+        }
+
 
         final Bundle paso_datos = new Bundle();
-        final EditText tvpizza = (EditText) findViewById(R.id.editText);
-        final Spinner miSpinner = (Spinner) findViewById(R.id.spinner);
+        final EditText tvpizza = findViewById(R.id.editText);
+        final Spinner miSpinner = findViewById(R.id.spinner);
 
-        class AdaptadorSpinnerPizza extends ArrayAdapter {
+        class AdaptadorSpinnerSandwich extends ArrayAdapter {
 
             Activity context;
 
-            AdaptadorSpinnerPizza(Activity context) {
+            AdaptadorSpinnerSandwich(Activity context) {
                 super(context, R.layout.spinner_helper, pizza);
                 this.context = context;
             }
@@ -87,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
                 return (item);
             }
         }
-        AdaptadorSpinnerPizza adaptadorSpin = new AdaptadorSpinnerPizza(this);
+        AdaptadorSpinnerSandwich adaptadorSpin = new AdaptadorSpinnerSandwich(this);
         miSpinner.setAdapter(adaptadorSpin);
 
         miSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -99,12 +114,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        final Button botonpasar = (Button) findViewById(R.id.button);
-        final RadioButton r1 = (RadioButton) findViewById(R.id.rb1);
-        final RadioButton r2 = (RadioButton) findViewById(R.id.rb2);
-        final CheckBox ch1 = (CheckBox) findViewById(R.id.cb1);
-        final CheckBox ch2 = (CheckBox) findViewById(R.id.cb2);
-        final CheckBox ch3 = (CheckBox) findViewById(R.id.cb3);
+        final Button botonpasar = findViewById(R.id.button);
+        final RadioButton r1 = findViewById(R.id.rb1);
+        final RadioButton r2 = findViewById(R.id.rb2);
+        final CheckBox ch1 = findViewById(R.id.cb1);
+        final CheckBox ch2 = findViewById(R.id.cb2);
+        final CheckBox ch3 = findViewById(R.id.cb3);
 
         botonpasar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -148,7 +163,7 @@ public class MainActivity extends AppCompatActivity {
                 double total = 0;
                 if (r2.isChecked()){
                     total = precio + precio * 0.1;
-                return total;}
+                    return total;}
                 else
                     return precio;
 
@@ -171,6 +186,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+    private void showMessage(int message){
+        Context context = getApplicationContext();
+        CharSequence text = getResources().getString(message);
+        int duration = Toast.LENGTH_SHORT;
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
+    }
 
     public boolean onCreateOptionsMenu(Menu menu) {
 
@@ -186,13 +208,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent one = new Intent(MainActivity.this, AcercaDe.class);
                 startActivity(one);
                 return true;
-            case R.id.Dibujo:
-                Intent two = new Intent(MainActivity.this, Imagen.class);
-                startActivity(two);
-                return true;
         }
         return super.onOptionsItemSelected(item);
     }
 }
-
-
