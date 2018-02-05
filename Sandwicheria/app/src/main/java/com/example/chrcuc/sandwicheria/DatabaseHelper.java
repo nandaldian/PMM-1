@@ -34,8 +34,6 @@ public class DatabaseHelper {
     // SQL de creación de la tabla
     private static final String DATABASE_CREATE_CLIENTES =
             "create table "+ DATABASE_TABLE_CLIENTES +" ("+SL_ID_CLIENTES+" integer primary key, "+SL_USER+" text not null, "+SL_PASSWORD+" text not null)";
-    private static final  String DATABASE_CREATE_PEDIDO = "create table "+ DATABASE_TABLE_PEDIDOS + " ("+SL_CANTIDAD + "integer not null, "
-            +SL_PRICE +"integer not null, "+SL_ID_FOOD+"integer primary key, " + SL_EXTRAS+ "bit not null")";
     //constructor
     public DatabaseHelper(Context ctx) {
         this.mCtx = ctx;
@@ -56,7 +54,6 @@ public class DatabaseHelper {
         }
         private void createTables(SQLiteDatabase db) {
             db.execSQL(DATABASE_CREATE_CLIENTES);
-            db.execSQL(DATABASE_CREATE_PEDIDO);
 
         }
 

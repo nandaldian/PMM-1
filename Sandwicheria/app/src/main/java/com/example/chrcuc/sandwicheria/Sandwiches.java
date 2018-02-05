@@ -10,19 +10,16 @@ public class Sandwiches implements Serializable{
     private String nombre;
     private int precio;
     private String ingredientes;
-    private int foto;
+    int id;
 
-    public Sandwiches(String nom, int pre, String ingr, int fo) {
-        nombre = nom;
-        precio = pre;
+    public Sandwiches(int nom, String pre, String ingr, float id) {
+        nombre = pre;
+        precio = nom;
         ingredientes = ingr;
-        foto = fo;
+
 
     }
 
-    public int getFoto() {
-        return foto;
-    }
 
     public String getIngredientes() {
         return ingredientes;
@@ -32,15 +29,19 @@ public class Sandwiches implements Serializable{
         this.nombre = nombre;
     }
 
-    public int getPrecio() {
+    public float getPrecio() {
         return precio;
     }
 
-    public void setPrecio(int precio) {
-        this.precio = precio;
+    public void setPrecio(float precio) {
+        this.precio = (int) precio;
     }
 
     public String getNombre() {
         return nombre;
+    }
+
+    public int getId() {
+        return id;
     }
 }

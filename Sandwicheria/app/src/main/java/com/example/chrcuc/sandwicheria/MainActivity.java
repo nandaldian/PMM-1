@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.SQLException;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -26,93 +27,15 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    DatabaseHelper mDbHelper;
-    static class ViewHolder
-    {
-        TextView nombre;
-        TextView precio;
-        TextView ingre;
-        ImageView img;
-    }
-    private Sandwiches[] pizza = new Sandwiches[]{
-            new Sandwiches("Bacon y Huevo",12,"Bacon/Huevo",R.drawable.baconhuevo),
-            new Sandwiches("Cangrejo",15,"Cangrejo/Mayonesa",R.drawable.cangrejo),
-            new Sandwiches("Campiñones",14,"Champiñones/Queso",R.drawable.champinyones),
-            new Sandwiches("Peperoni",13,"Peperoni/Queso",R.drawable.peperoni),
-            new Sandwiches("Pollo",13,"Pollo/Queso",R.drawable.pollo),
-    };
+    private Spinner spinnerCarta;
+    private  ArrayList<Sandwiches> carta= new ArrayList<Sandwiches>();
+    String[] columnas = new String[] {"id","ingredientes","nombre", "precio"};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         this.setTitle("Haz tu pedido");
-
-        mDbHelper = new DatabaseHelper(this);
-        try {
-            fillData();
-        } catch (SQLException e) {
-            e.printStackTrace();
-            showMessage(R.string.dataError);
-        }
-
-
-        final Bundle paso_datos = new Bundle();
-        final EditText tvpizza = findViewById(R.id.editText);
-        final Spinner miSpinner = findViewById(R.id.spinner);
-
-        class AdaptadorSpinnerSandwich extends ArrayAdapter {
-
-            Activity context;
-
-            AdaptadorSpinnerSandwich(Activity context) {
-                super(context, R.layout.spinner_helper, pizza);
-                this.context = context;
-            }
-
-            public View getDropDownView(int posicion, View convertView, ViewGroup parent) {
-                return getView(posicion, convertView, parent);
-            }
-
-            public View getView(int position, View convertView, ViewGroup parent) {
-                View item = convertView;
-                ViewHolder holder;
-
-                if (item == null) {
-                    LayoutInflater inflater = context.getLayoutInflater();
-                    item = inflater.inflate(R.layout.spinner_helper, null);
-
-                    holder = new ViewHolder();
-                    holder.nombre = (TextView) item.findViewById(R.id.nombre);
-                    holder.ingre = (TextView) item.findViewById(R.id.ingredientes);
-                    holder.precio = (TextView) item.findViewById(R.id.Precio);
-                    holder.img = (ImageView) item.findViewById(R.id.image);
-
-                    item.setTag(holder);
-
-                } else {
-                    holder = (ViewHolder) item.getTag();
-                }
-
-                holder.nombre.setText(pizza[position].getNombre());
-                holder.ingre.setText(pizza[position].getIngredientes());
-                String a = Integer.toString(pizza[position].getPrecio());
-                holder.precio.setText(a);
-                holder.img.setImageResource(pizza[position].getFoto());
-
-                return (item);
-            }
-        }
-        AdaptadorSpinnerSandwich adaptadorSpin = new AdaptadorSpinnerSandwich(this);
-        miSpinner.setAdapter(adaptadorSpin);
-
-        miSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            public void onItemSelected(AdapterView arg0, View arg1, int position, long id) {
-                paso_datos.putSerializable("PIZZA", pizza[miSpinner.getSelectedItemPosition()]);
-            }
-
-            public void onNothingSelected(AdapterView<?> adapterView) {
-            }
-        });
 
         final Button botonpasar = findViewById(R.id.button);
         final RadioButton r1 = findViewById(R.id.rb1);
@@ -120,72 +43,119 @@ public class MainActivity extends AppCompatActivity {
         final CheckBox ch1 = findViewById(R.id.cb1);
         final CheckBox ch2 = findViewById(R.id.cb2);
         final CheckBox ch3 = findViewById(R.id.cb3);
+        final EditText tvpizza = findViewById(R.id.editText);
 
-        botonpasar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String cantidad = tvpizza.getText().toString();
-                paso_datos.putString("CANTIDAD", cantidad);
-                int canti = Integer.parseInt(cantidad);
-                int pos = miSpinner.getSelectedItemPosition();
-                int precio = pizza[pos].getPrecio();
-                int cont =0;
+        CartaHelper cartaHelper = new CartaHelper(this,"DBSandwich",null,1);
+        spinnerCarta = findViewById(R.id.spinner);
+        SQLiteDatabase sqLiteDatabase ;
+        sqLiteDatabase = cartaHelper.getWritableDatabase();
 
-                int paso1 = añadido(cont);
-                String comple = Integer.toString(paso1);
-                paso_datos.putString("EXTRAS", comple);
-                int paso2 = cantidad(canti, precio);
-                double total = envio(paso2 + paso1);
+        if (sqLiteDatabase != null){
+            cartaHelper.fillCarta(sqLiteDatabase);
+        }
 
-                String resultado = Double.toString(total);
-                String tipoeenvio = envios();
-                paso_datos.putString("TOTAL", resultado);
-                paso_datos.putString("ENVIO", tipoeenvio);
+        sqLiteDatabase = cartaHelper.getReadableDatabase();
 
 
-                Intent miIntent = new Intent(MainActivity.this, Resultado.class);
-                miIntent.putExtras(paso_datos);
-                startActivity(miIntent);
 
+
+
+        Cursor cursor = sqLiteDatabase.query("carta", columnas,null,null,null,null,null);
+
+        if (cursor.moveToFirst()){
+            do {
+                int id = cursor.getInt(0);
+                String nombre = cursor.getString(1);
+                String ingredientes = cursor.getString(2);
+                float precio = cursor.getFloat(4);
+                carta.add(new Sandwiches(id,nombre,ingredientes,precio));
+            }while(cursor.moveToNext());
+        }
+
+        CartaArrayAdapter cartaArrayAdapter = new CartaArrayAdapter(this,carta);
+        spinnerCarta.setAdapter(cartaArrayAdapter);
+
+
+        spinnerCarta.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView arg0, View arg1, int position, long id) {
+                String result ="ID:"+carta.get(position).getId()+
+                        "\nNOMBRE:"+carta.get(position).getNombre()+
+                        "\nPrecio"+ carta.get(position).getPrecio();
+                Toast.makeText(getApplicationContext(),result,Toast.LENGTH_SHORT).show();
             }
 
-            public int añadido(int cont) {
-                if (ch1.isChecked())
-                    cont++;
-                if (ch2.isChecked())
-                    cont++;
-                if (ch3.isChecked())
-                    cont++;
-                return cont;
-            }
-
-            public double envio(int precio) {
-                double total = 0;
-                if (r2.isChecked()){
-                    total = precio + precio * 0.1;
-                    return total;}
-                else
-                    return precio;
-
-            }
-
-            public int cantidad(int numero, int precio) {
-                int total = numero * precio;
-                return total;
-            }
-
-            public String envios() {
-                String x = "";
-                if (r1.isChecked()) {
-                    x = "En el local";
-                } else if (r2.isChecked()) {
-                    x = "Envio domicilio";
-                }
-                return x;
-
+            public void onNothingSelected(AdapterView<?> adapterView) {
             }
         });
-    }
+
+
+
+
+
+
+
+//
+//        botonpasar.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                String cantidad = tvpizza.getText().toString();
+//                int canti = Integer.parseInt(cantidad);
+//                int pos = spinnerCarta.getSelectedItemPosition();
+//                //TODO insert pedido
+//                int cont =0;
+//                //TODO insert pedido
+//                int paso1 = añadido(cont);
+//                String comple = Integer.toString(paso1);
+//              //TODO insert pedido
+//                //double total = envio(paso2 + paso1);
+//
+//               // String resultado = Double.toString(total);
+//                String tipoeenvio = envios();
+//
+//
+//
+//                Intent miIntent = new Intent(MainActivity.this, Resultado.class);
+//                startActivity(miIntent);
+//
+//            }
+//
+//            public int añadido(int cont) {
+//                if (ch1.isChecked())
+//                    cont++;
+//                if (ch2.isChecked())
+//                    cont++;
+//                if (ch3.isChecked())
+//                    cont++;
+//                return cont;
+//            }
+//
+//            public double envio(int precio) {
+//                double total = 0;
+//                if (r2.isChecked()){
+//                    total = precio + precio * 0.1;
+//                    return total;}
+//                else
+//                    return precio;
+//
+//            }
+//
+//            public int cantidad(int numero, int precio) {
+//                int total = numero * precio;
+//                return total;
+//            }
+//
+//            public String envios() {
+//                String x = "";
+//                if (r1.isChecked()) {
+//                    x = "En el local";
+//                } else if (r2.isChecked()) {
+//                    x = "Envio domicilio";
+//                }
+//                return x;
+//
+//            }
+ //       });
+  }
     private void showMessage(int message){
         Context context = getApplicationContext();
         CharSequence text = getResources().getString(message);
