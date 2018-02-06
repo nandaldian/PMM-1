@@ -28,8 +28,9 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private Spinner spinnerCarta;
-    private  ArrayList<Sandwiches> carta= new ArrayList<Sandwiches>();
-    String[] columnas = new String[] {"id","ingredientes","nombre", "precio"};
+    Context context = this;
+    private  Sandwiches[] carta;
+    String[] columnas = new String[] {"id","nombre","ingredientes","precio"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,37 +51,52 @@ public class MainActivity extends AppCompatActivity {
         SQLiteDatabase sqLiteDatabase ;
         sqLiteDatabase = cartaHelper.getWritableDatabase();
 
-        if (sqLiteDatabase != null){
-            cartaHelper.fillCarta(sqLiteDatabase);
+        if (sqLiteDatabase == null){
+            sqLiteDatabase.execSQL("INSERT INTO carta (nombre, ingredientes,precio) VALUES ('1','Bacon y Huevo','Bacon/Huevo','1','3') ");
+            sqLiteDatabase.execSQL("INSERT INTO carta (nombre, ingredientes,precio) VALUES ('Cangrejo','Cangrejo/Mayonesa','2','3') ");
+            sqLiteDatabase.execSQL("INSERT INTO carta (nombre, ingredientes,precio) VALUES ('Campiñones','Champiñones/Queso','3','4') ");
+            sqLiteDatabase.execSQL("INSERT INTO carta (nombre, ingredientes,precio) VALUES ('Peperoni','Peperoni/Queso','4','2') ");
+            sqLiteDatabase.execSQL("INSERT INTO carta (nombre, ingredientes,precio) VALUES ('Pollo','Pollo/Queso','5','5') ");
+            sqLiteDatabase.execSQL("INSERT INTO carta (nombre, ingredientes,precio) VALUES ('Esparagos con queso','Esparragos/Queso','6','3') ");
         }
-
-        sqLiteDatabase = cartaHelper.getReadableDatabase();
-
-
 
 
 
         Cursor cursor = sqLiteDatabase.query("carta", columnas,null,null,null,null,null);
+
+        carta = new Sandwiches[cursor.getCount()];
+
+        int i = 0;
+        int a = cursor.getCount();
+
+        System.out.println(a);
+
 
         if (cursor.moveToFirst()){
             do {
                 int id = cursor.getInt(0);
                 String nombre = cursor.getString(1);
                 String ingredientes = cursor.getString(2);
-                float precio = cursor.getFloat(4);
-                carta.add(new Sandwiches(id,nombre,ingredientes,precio));
+                float precio = cursor.getFloat(3);
+
+               carta[i] = new Sandwiches(precio,nombre,ingredientes,id);
+
+               i++;
             }while(cursor.moveToNext());
         }
+
+        sqLiteDatabase.close();
 
         CartaArrayAdapter cartaArrayAdapter = new CartaArrayAdapter(this,carta);
         spinnerCarta.setAdapter(cartaArrayAdapter);
 
 
         spinnerCarta.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
             public void onItemSelected(AdapterView arg0, View arg1, int position, long id) {
-                String result ="ID:"+carta.get(position).getId()+
-                        "\nNOMBRE:"+carta.get(position).getNombre()+
-                        "\nPrecio"+ carta.get(position).getPrecio();
+                String result ="ID:"+Integer.toString(carta[position].getId())+
+                        "\nNOMBRE:"+carta[position].getNombre()+
+                        "\nPrecio"+ Float.toString(carta[position].getPrecio());
                 Toast.makeText(getApplicationContext(),result,Toast.LENGTH_SHORT).show();
             }
 
@@ -91,71 +107,83 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+        botonpasar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+               PedidoHelper pedidoHelper = new PedidoHelper(context,"DBSandwich",null,1);
 
 
 
-//
-//        botonpasar.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                String cantidad = tvpizza.getText().toString();
-//                int canti = Integer.parseInt(cantidad);
-//                int pos = spinnerCarta.getSelectedItemPosition();
-//                //TODO insert pedido
-//                int cont =0;
-//                //TODO insert pedido
-//                int paso1 = añadido(cont);
-//                String comple = Integer.toString(paso1);
-//              //TODO insert pedido
-//                //double total = envio(paso2 + paso1);
-//
-//               // String resultado = Double.toString(total);
-//                String tipoeenvio = envios();
-//
-//
-//
-//                Intent miIntent = new Intent(MainActivity.this, Resultado.class);
-//                startActivity(miIntent);
-//
-//            }
-//
-//            public int añadido(int cont) {
-//                if (ch1.isChecked())
-//                    cont++;
-//                if (ch2.isChecked())
-//                    cont++;
-//                if (ch3.isChecked())
-//                    cont++;
-//                return cont;
-//            }
-//
-//            public double envio(int precio) {
-//                double total = 0;
-//                if (r2.isChecked()){
-//                    total = precio + precio * 0.1;
-//                    return total;}
-//                else
-//                    return precio;
-//
-//            }
-//
-//            public int cantidad(int numero, int precio) {
-//                int total = numero * precio;
-//                return total;
-//            }
-//
-//            public String envios() {
-//                String x = "";
-//                if (r1.isChecked()) {
-//                    x = "En el local";
-//                } else if (r2.isChecked()) {
-//                    x = "Envio domicilio";
-//                }
-//                return x;
-//
-//            }
- //       });
-  }
+                String cantida = tvpizza.getText().toString();
+                float canti = Float.parseFloat(cantida);
+                int pos = spinnerCarta.getSelectedItemPosition();
+
+                int cont =0;
+                float cantidad = carta[pos].getPrecio()*canti;
+                float a= añadido(cantidad);
+                float b = envio(a);
+                float total = b;
+
+                String resultado = Float.toString(total);
+                String tipoeenvio = envios();
+
+
+
+                Intent miIntent = new Intent(MainActivity.this, Resultado.class);
+                startActivity(miIntent);
+
+          }
+
+            public int añadido(float cont) {
+                if (ch1.isChecked())
+                    cont++;
+                if (ch2.isChecked())
+                    cont++;
+                if (ch3.isChecked())
+                    cont++;
+                return cont;
+            }
+
+            public float envio(float precio) {
+                float total = 0;
+                if (r2.isChecked()){
+                    total = (float) (precio + precio * 0.1);
+                    return total;}
+                else
+                    return precio;
+
+            }
+
+            public float cantidad(float numero, float precio) {
+                float total = numero * precio;
+                return total;
+            }
+
+            public String envios() {
+                String x = "";
+                if (r1.isChecked()) {
+                    x = "En el local";
+                } else if (r2.isChecked()) {
+                    x = "Envio domicilio";
+                }
+                return x;
+
+            }
+            String extra = " ";
+
+            public String tipoExtra() {
+                if (ch1.isChecked())
+                   extra =extra+ "Salsa ";
+                if (ch2.isChecked())
+                    extra =extra+ "Referesco ";
+                if (ch3.isChecked())
+                    extra =extra+ "Patatas ";
+
+                return extra;
+            }
+    });
+}
     private void showMessage(int message){
         Context context = getApplicationContext();
         CharSequence text = getResources().getString(message);
