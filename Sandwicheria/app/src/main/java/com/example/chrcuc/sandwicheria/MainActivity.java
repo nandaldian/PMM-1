@@ -27,9 +27,11 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+    SQLiteDatabase sqLiteDatabase,sqLiteDatabasepedido ;
     private Spinner spinnerCarta;
     Context context = this;
     private  Sandwiches[] carta;
+    String[] columnaspedidos = new String[]{"extras","sandwich","cantidad","precio","envio"};
     String[] columnas = new String[] {"id","nombre","ingredientes","precio"};
 
     @Override
@@ -45,10 +47,11 @@ public class MainActivity extends AppCompatActivity {
         final CheckBox ch2 = findViewById(R.id.cb2);
         final CheckBox ch3 = findViewById(R.id.cb3);
         final EditText tvpizza = findViewById(R.id.editText);
+        spinnerCarta = findViewById(R.id.spinner);
+
 
         CartaHelper cartaHelper = new CartaHelper(this,"DBSandwich",null,1);
-        spinnerCarta = findViewById(R.id.spinner);
-        SQLiteDatabase sqLiteDatabase ;
+
         sqLiteDatabase = cartaHelper.getWritableDatabase();
 
         if (sqLiteDatabase == null){
@@ -85,7 +88,6 @@ public class MainActivity extends AppCompatActivity {
             }while(cursor.moveToNext());
         }
 
-        sqLiteDatabase.close();
 
         CartaArrayAdapter cartaArrayAdapter = new CartaArrayAdapter(this,carta);
         spinnerCarta.setAdapter(cartaArrayAdapter);
@@ -111,13 +113,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-               PedidoHelper pedidoHelper = new PedidoHelper(context,"DBSandwich",null,1);
-
-
+                sqLiteDatabasepedido.execSQL(PedidoHelper.DATABASE_CREATE_PEDIDO);
 
                 String cantida = tvpizza.getText().toString();
                 float canti = Float.parseFloat(cantida);
                 int pos = spinnerCarta.getSelectedItemPosition();
+                int catida = (int)canti;
 
                 int cont =0;
                 float cantidad = carta[pos].getPrecio()*canti;
@@ -125,24 +126,28 @@ public class MainActivity extends AppCompatActivity {
                 float b = envio(a);
                 float total = b;
 
-                String resultado = Float.toString(total);
+                int resultado = (int) total;
                 String tipoeenvio = envios();
+                String tipoExtra = tipoExtra();
+                String sandwich  = carta[pos].getNombre();
 
-
+                sqLiteDatabasepedido.execSQL("INSERT INTO pedidos (extras,sandwich,cantidad,precio,envio) VALUES ( '" +tipoExtra+"',' "+ sandwich +  "','" +catida +
+                        "',' " +resultado+"','"+ tipoeenvio+"') ");
 
                 Intent miIntent = new Intent(MainActivity.this, Resultado.class);
                 startActivity(miIntent);
 
           }
 
-            public int añadido(float cont) {
+            public float añadido(float cont) {
                 if (ch1.isChecked())
                     cont++;
                 if (ch2.isChecked())
                     cont++;
                 if (ch3.isChecked())
                     cont++;
-                return cont;
+                return
+                        cont;
             }
 
             public float envio(float precio) {

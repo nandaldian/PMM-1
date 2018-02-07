@@ -4,8 +4,8 @@
     <string name="lstNoElements">No hay nada pendiente</string>
     <string name="pending">Tarea pendiente...</string>
     <string name="newItem">Nuevo elemento</string>
-    <string name="deleteItem">Eliminar elemento</string>
-    <string name="editItem">Editar elemento</string>
+    <string name="deleteItem">Eliminar pedido</string>
+    <string name="editItem">Entregar pedido</string>
     <string name="alrtDelete">Eliminar elemento</string>
     <string name="alrtDeleteEntry">Se va a eliminar un elemento. ¿Está seguro?</string>
     <string name="element">Tarea</string>

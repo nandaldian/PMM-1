@@ -11,11 +11,11 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 
-public class DatabaseHelper {
+public class DataBaseHelper {
     private Context mCtx = null;
     private DataBaseHelperInternal mDbHelper = null;
     private SQLiteDatabase mDb = null;
-    private static final String DATABASE_NAME = "dbSandwicheria";
+    private static final String DATABASE_NAME = "DBSandwich";
     private static final int DATABASE_VERSION = 3;
     // tabla y campos
     private static final String DATABASE_TABLE_CLIENTES = "Clientes";
@@ -24,7 +24,7 @@ public class DatabaseHelper {
     public static final String SL_USER= "user";
     public static final String SL_PASSWORD = "password";
 
-    public static final String SL_NAME= "name";
+    public static final String SL_ENVIO= "envio";
     public static final String SL_CANTIDAD= "cantidad";
     public static final String SL_PRICE= "price";
     public static final String SL_ID_FOOD = "sandwich";
@@ -32,10 +32,12 @@ public class DatabaseHelper {
 
 
     // SQL de creación de la tabla
+    public static final  String DATABASE_CREATE_PEDIDO = "CREATE TABLE pedidos (extras TEXT,sandwich TEXT," +
+            "cantidad INTEGER not null,precio INTEGER not null,envio TEXT)";
     private static final String DATABASE_CREATE_CLIENTES =
             "create table "+ DATABASE_TABLE_CLIENTES +" ("+SL_ID_CLIENTES+" integer primary key, "+SL_USER+" text not null, "+SL_PASSWORD+" text not null)";
     //constructor
-    public DatabaseHelper(Context ctx) {
+    public DataBaseHelper(Context ctx) {
         this.mCtx = ctx;
     }
     //clase privada para control de la SQLite
@@ -53,16 +55,16 @@ public class DatabaseHelper {
             createTables(db);
         }
         private void createTables(SQLiteDatabase db) {
-            db.execSQL(DATABASE_CREATE_CLIENTES);
+            db.execSQL(DATABASE_CREATE_PEDIDO);
 
         }
 
         private void deleteTablesClientes(SQLiteDatabase db) {
-            db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE_CLIENTES);
+            db.execSQL("DROP TABLE IF EXISTS " + DATABASE_CREATE_PEDIDO);
         }
     }
 
-    public DatabaseHelper open()  {
+    public DataBaseHelper open()  {
         mDbHelper = new DataBaseHelperInternal(mCtx);
         mDb = mDbHelper.getWritableDatabase();
         return this;
@@ -74,35 +76,37 @@ public class DatabaseHelper {
 
     //obtener todos los elementos
     public Cursor getItems() {
-        return mDb.query(DATABASE_TABLE_CLIENTES, new String[] {SL_ID_CLIENTES, SL_USER, SL_PASSWORD}, null, null, null, null,null);
+        return mDb.query(DATABASE_TABLE_PEDIDOS, new String[] {SL_EXTRAS, SL_ID_FOOD, SL_CANTIDAD,SL_PRICE,SL_ENVIO}, null, null, null, null,null);
     }
 
 
     //crear elemento
-    public long insertItem(String item, String place, String description, int importance){
+    public long insertItem(String extras, String food, int  cantidad, float importance,String envio){
         ContentValues initialValues = new ContentValues();
-        initialValues.put(SL_USER, item);
-        initialValues.put(SL_PASSWORD, place);
-        return mDb.insert(DATABASE_TABLE_CLIENTES, null, initialValues);
+        initialValues.put(SL_EXTRAS, extras);
+        initialValues.put(SL_ID_FOOD, food);
+        initialValues.put(SL_CANTIDAD, cantidad);
+        initialValues.put(SL_PRICE, importance);
+        initialValues.put(SL_ENVIO, envio);
+
+        return mDb.insert(DATABASE_TABLE_PEDIDOS, null, initialValues);
     }
 
     //borrar
     public int delete(int mLastRowSelected) {
-        return mDb.delete(DATABASE_TABLE_CLIENTES, SL_ID_CLIENTES + "=?", new String[]{ Integer.toString(mLastRowSelected)});
-    }
-
-    //obtener elemento
-    public Cursor getItem(int itemId){
-        return mDb.rawQuery(" select "+ SL_USER+","+ SL_PASSWORD+" from " + DATABASE_TABLE_CLIENTES  + " where " + SL_ID_CLIENTES + "=?",new String[]{Integer.toString(itemId)});
+        return mDb.delete(DATABASE_TABLE_PEDIDOS, SL_ID_FOOD + "=?", new String[]{ Integer.toString(mLastRowSelected)});
     }
 
     //actualiza
-    public int updateItem(int ident, String user, String password) {
+    public int updateItem(String extras, String food, int  cantidad, float importance,String envio) {
         ContentValues cv = new ContentValues();
-        cv.put(SL_USER, user);
-        cv.put(SL_PASSWORD,password );
+        cv.put(SL_EXTRAS, extras);
+        cv.put(SL_ID_FOOD, food);
+        cv.put(SL_CANTIDAD, cantidad);
+        cv.put(SL_PRICE, importance);
+        cv.put(SL_ENVIO, envio);
 
-        return mDb.update(DATABASE_TABLE_CLIENTES, cv, SL_ID_CLIENTES + "=?", new String[]{Integer.toString(ident)});
+        return mDb.update(DATABASE_TABLE_PEDIDOS, cv, SL_ID_FOOD + "=?", new String[]{Integer.toString(cantidad)});
     }
 
 
