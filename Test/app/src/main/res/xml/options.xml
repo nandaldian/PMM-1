@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="Indicar Tipo de Tarea">
+        <ListPreference
+            android:key="opcion1"
+            android:title="Tipo tarea"
+            android:summary="Tareas"
+            android:dialogTitle="Indicar tarea"
+            android:entries="@array/pais"
+            android:entryValues="@array/codigopais"/>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

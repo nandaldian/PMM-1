@@ -3,7 +3,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="lstNoElements">No hay nada pendiente</string>
-    <string name="pending">Tarea pendiente...</string>
+    <string name="pending">Tarea de ...</string>
     <string name="newItem">Nuevo elemento</string>
     <string name="deleteItem">Eliminar elemento</string>
     <string name="editItem">Editar elemento</string>

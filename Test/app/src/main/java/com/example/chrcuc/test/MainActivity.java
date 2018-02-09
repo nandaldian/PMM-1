@@ -2,13 +2,19 @@ package com.example.chrcuc.test;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.app.ListActivity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.support.annotation.Nullable;
+import android.util.AttributeSet;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -33,6 +39,14 @@ public class MainActivity extends ListActivity{
     public static final int EDIT_ITEM = 2;
     public static final int SHOW_ITEM = 3;
 
+    TextView textView ;
+
+    String tarea;
+    String lugar;
+    int importancia;
+    String decripcion;
+    int id;
+
     //elemento seleccionado
     private int mLastRowSelected = 0;
     public static DataBaseHelper mDbHelper = null;
@@ -51,8 +65,32 @@ public class MainActivity extends ListActivity{
             showMessage(R.string.dataError);
         }
         registerForContextMenu(getListView());
+
+
+
+
     }
 
+    //preferences
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
+        String prefe = pref.getString("opcion1","");
+        textView = findViewById(R.id.tareas);
+        textView.setText(prefe);
+    }
+
+    public void addFragment(int id){
+        Fragment fragment = SimpleFragment.newInstance(id);
+        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.fragmenShow,fragment);
+        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+
+    }
     private void showMessage(int message){
         Context context = getApplicationContext();
         CharSequence text = getResources().getString(message);
@@ -100,7 +138,6 @@ public class MainActivity extends ListActivity{
         //asignar adaptador a la lista
         setListAdapter(items);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -153,6 +190,10 @@ public class MainActivity extends ListActivity{
                 Intent intent = new Intent (this,ItemActivity.class);
                 startActivityForResult(intent, NEW_ITEM);
                 return true;
+            case R.id.preferences:
+                Intent intent1 = new Intent(this,options.class);
+                startActivity(intent1);
+
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -164,7 +205,8 @@ public class MainActivity extends ListActivity{
         int rowId = (Integer)v.findViewById(R.id.row_importance).getTag();
         i.putExtra(DataBaseHelper.SL_ID, rowId);
         i.putExtra("action", SHOW_ITEM);
-        startActivityForResult(i, SHOW_ITEM);
+        addFragment(rowId);
+        //startActivityForResult(i, SHOW_ITEM);
     }
 
 
@@ -221,11 +263,13 @@ public class MainActivity extends ListActivity{
             return row;
         }
     }
+
     private class ListEntry {
         int id;
         String task;
         String place;
         int importance;
+        String description;
     }
 
 }

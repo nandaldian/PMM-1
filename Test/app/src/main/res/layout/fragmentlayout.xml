@@ -1,0 +1,93 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/txt1"
+        android:layout_width="100dp"
+        android:layout_height="20dp" />
+
+    <TextView
+        android:id="@+id/txt2"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/txt1"
+        android:layout_marginTop="23dp" />
+
+    <TextView
+        android:id="@+id/txt3"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/txt2"
+        android:layout_marginTop="30dp" />
+
+    <TextView
+        android:id="@+id/txt4"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/txt3"
+        android:layout_marginTop="29dp" />
+
+    <TextView
+        android:id="@+id/txt5"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/txt4"
+        android:layout_marginTop="29dp" />
+
+    <TextView
+        android:id="@+id/txt6"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:layout_alignBaseline="@+id/txt2"
+        android:layout_alignBottom="@+id/txt2"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="53dp"
+        android:layout_marginRight="53dp" />
+
+    <TextView
+        android:id="@+id/txt7"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:layout_alignBaseline="@+id/txt3"
+        android:layout_alignBottom="@+id/txt3"
+        android:layout_alignLeft="@+id/txt6"
+        android:layout_alignStart="@+id/txt6" />
+
+    <TextView
+        android:id="@+id/txt8"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:layout_alignBaseline="@+id/txt4"
+        android:layout_alignBottom="@+id/txt4"
+        android:layout_alignLeft="@+id/txt7"
+        android:layout_alignStart="@+id/txt7" />
+
+    <TextView
+        android:id="@+id/txt9"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:layout_alignBaseline="@+id/txt5"
+        android:layout_alignBottom="@+id/txt5"
+        android:layout_alignLeft="@+id/txt8"
+        android:layout_alignStart="@+id/txt8" />
+
+
+
+
+
+
+
+
+</RelativeLayout>
