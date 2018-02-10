@@ -134,8 +134,8 @@ public class MainActivity extends AppCompatActivity {
                 sqLiteDatabasepedido.execSQL("INSERT INTO pedidos (extras,sandwich,cantidad,precio,envio) VALUES ( '" +tipoExtra+"',' "+ sandwich +  "','" +catida +
                         "',' " +resultado+"','"+ tipoeenvio+"') ");
 
-                Intent miIntent = new Intent(MainActivity.this, Resultado.class);
-                startActivity(miIntent);
+                //Intent miIntent = new Intent(MainActivity.this, Resultado.class);
+               // startActivity(miIntent);
 
           }
 
