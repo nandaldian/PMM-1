@@ -1,5 +1,6 @@
 package com.example.chrcuc.sandwicheria;
 
+import android.app.ListActivity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -30,8 +31,9 @@ public class LogInActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ingresar();
+                    ingresar();
             }
+
         });
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,13 +53,16 @@ public class LogInActivity extends AppCompatActivity {
     }
 
     public void ingresar() {
-        DataBaseHelper dataBaseHelper = new DataBaseHelper(this, "DBSandwich", null, 1);
+        DataBaseHelper dataBaseHelper = new DataBaseHelper(LogInActivity.this, "DBSandwich", null, 1);
         SQLiteDatabase sqLiteDatabase = dataBaseHelper.getWritableDatabase();
+
+        sqLiteDatabase.execSQL("create table clientes (codigo integer primary key autoincrement,usuario text,contrasena text)");
+        sqLiteDatabase.execSQL("insert into clientes(id,usuario,contrasena) values(null,'admin','admin')");
 
 
         String users = editText.getText().toString();
         String passwords = editText1.getText().toString();
-        cursor = sqLiteDatabase.rawQuery("select nombre,contrasena from clientes where nombre = '" + users + "' and contrasena = '" + passwords + "'", null);
+        cursor = sqLiteDatabase.rawQuery("select usuario,contrasena from clientes where usuario = '" + users + "' and contrasena = '" + passwords + "'", null);
 
 
         if (cursor.moveToFirst() == true) {
@@ -66,7 +71,7 @@ public class LogInActivity extends AppCompatActivity {
             String password = cursor.getString(1);
 
             if (users.equals(user) && passwords.equals(password)) {
-                Intent ven = new Intent(this, MainActivity.class);
+                Intent ven = new Intent(LogInActivity.this, MainActivity.class);
                 startActivity(ven);
 
                 editText1.setText("");

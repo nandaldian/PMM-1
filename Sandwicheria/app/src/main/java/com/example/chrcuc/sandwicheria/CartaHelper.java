@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 
 public class CartaHelper extends SQLiteOpenHelper {
-    private String DATA_CARTA =  "CREATE TABLE carta (id INTEGER primary key,nombre INTEGER,ingredientes TEXT," +
+    public String DATA_CARTA =  "CREATE TABLE carta (id INTEGER primary key,nombre INTEGER,ingredientes TEXT," +
             "precio INTEGER not null,foto INTEGER not null)";
 
     public CartaHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {

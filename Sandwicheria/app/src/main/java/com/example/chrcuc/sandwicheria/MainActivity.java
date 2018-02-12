@@ -54,14 +54,16 @@ public class MainActivity extends AppCompatActivity {
 
         sqLiteDatabase = cartaHelper.getWritableDatabase();
 
-        if (sqLiteDatabase == null){
+        sqLiteDatabase.execSQL("CREATE TABLE carta (id INTEGER primary key,nombre INTEGER,ingredientes TEXT,precio INTEGER not null,foto INTEGER not null)");
+
+
             sqLiteDatabase.execSQL("INSERT INTO carta (nombre, ingredientes,precio) VALUES ('1','Bacon y Huevo','Bacon/Huevo','1','3') ");
             sqLiteDatabase.execSQL("INSERT INTO carta (nombre, ingredientes,precio) VALUES ('Cangrejo','Cangrejo/Mayonesa','2','3') ");
             sqLiteDatabase.execSQL("INSERT INTO carta (nombre, ingredientes,precio) VALUES ('Campiñones','Champiñones/Queso','3','4') ");
             sqLiteDatabase.execSQL("INSERT INTO carta (nombre, ingredientes,precio) VALUES ('Peperoni','Peperoni/Queso','4','2') ");
             sqLiteDatabase.execSQL("INSERT INTO carta (nombre, ingredientes,precio) VALUES ('Pollo','Pollo/Queso','5','5') ");
             sqLiteDatabase.execSQL("INSERT INTO carta (nombre, ingredientes,precio) VALUES ('Esparagos con queso','Esparragos/Queso','6','3') ");
-        }
+
 
 
 

@@ -26,7 +26,22 @@ public class RegistroActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                registrar(view);
+                DataBaseHelper dataBaseHelper = new DataBaseHelper(RegistroActivity.this, "DBSandwich", null, 1);
+                SQLiteDatabase sqLiteDatabase = dataBaseHelper.getWritableDatabase();
+
+
+                String users = editText.getText().toString();
+                String passwords = editText1.getText().toString();
+
+                ContentValues contentValues = new ContentValues();
+                contentValues.put("nombre",users);
+                contentValues.put("contrasena",passwords);
+
+                sqLiteDatabase.insert("clientes",null,contentValues);
+                sqLiteDatabase.close();
+
+                Intent intent = new Intent(RegistroActivity.this,LogInActivity.class);
+                startActivity(intent);
             }
         });
         button1.setOnClickListener(new View.OnClickListener() {
@@ -39,22 +54,7 @@ public class RegistroActivity extends AppCompatActivity {
 
     }
     public void registrar(View view){
-        DataBaseHelper dataBaseHelper = new DataBaseHelper(this, "DBSandwich", null, 1);
-        SQLiteDatabase sqLiteDatabase = dataBaseHelper.getWritableDatabase();
 
-
-        String users = editText.getText().toString();
-        String passwords = editText1.getText().toString();
-
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("nombre",users);
-        contentValues.put("contrasena",passwords);
-
-        sqLiteDatabase.insert("clientes",null,contentValues);
-        sqLiteDatabase.close();
-
-        Intent intent = new Intent(this,LogInActivity.class);
-        startActivity(intent);
     }
     public  void  volver(View view){
         Intent intent = new Intent(this,LogInActivity.class);
